@@ -172,6 +172,9 @@ replimanWindow::UpdateList(bool make_empty)
 		PostMessage(CMD_REP_SELECTION_CHANGED);
 }
 
+// 2004/10/10 - I would think that it is better if this
+// function handled better the case in which the tracker
+// or deskbar is not loaded
 bool
 replimanWindow::UpdateQuasiList(int32 target, bool make_empty)
 {
@@ -469,7 +472,7 @@ replimanWindow::MessengerForTarget(type_code w) const
 			// The Desktop is owned by Tracker and the Shelf is in the
 			// View "PoseView" in Window "Desktop"
 			request.AddSpecifier("View", "PoseView");
-			request.AddSpecifier("Window", "Desktop");
+			request.AddSpecifier("Window", "/boot/home/Desktop");
 			to = BMessenger("application/x-vnd.Be-TRAK", -1);
 			break;
 		}
